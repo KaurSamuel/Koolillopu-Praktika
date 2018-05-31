@@ -149,7 +149,3 @@
 [Edit] Msg:   SceneView.editor...
 [Core] Msg: Assembly loaded: FarseerDuality 4.1.4.0
 [Core] Msg: Determining OpenGL context capabilities...
-[Core] Msg: Loading Resource 'Data\SpaceBg.Pixmap.res'
-[Core] Msg: Loading Resource 'Data\floor.Pixmap.res'
-[Core] Msg: Loading Resource 'Data\ShipOne.Pixmap.res'
-[Core] Msg: Loading Resource 'Data\Scene.Scene.res'
