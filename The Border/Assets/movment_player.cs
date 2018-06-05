@@ -6,28 +6,39 @@ public class movment_player : MonoBehaviour {
 
     private Rigidbody2D player_rb;
     public float speed;
-    public bool grounded = false;
-    public Transform Ground;
+    //public bool grounded = false;
+    public Transform groundCheck;
     [HideInInspector]public bool jump = false;
-    [HideInInspector] public bool facingRight = true;
+    [HideInInspector]public bool facingRight = true;
     public float jumpforce= 1000f;
     public float moveForce = 365f;
     public float maxSpeed = 5f;
+    public float jumptimer = 1;
+    [HideInInspector]public float jumptimeruptate;
+    bool isgrounded = true;
+    private bool grounded = false;
     Animator anim;
+
+
+
+
     // Use this for initialization
     void Start () {
         player_rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-	}
+        jumptimeruptate = jumptimer;
+    }
 
     // Update is called once per frame
     private void Update()
     {
-        grounded = Physics2D.Linecast(transform.position, Ground.position, 0 << LayerMask.NameToLayer("Ground"));
-
-        if (Input.GetButtonDown("Jump")&& grounded == true)
+        
+        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        jumptimeruptate -= Time.deltaTime;
+        if (Input.GetButtonDown("Jump") && jumptimeruptate < 0)
         {
             jump = true;
+            jumptimeruptate = jumptimer;
         }
     }
 
@@ -54,6 +65,7 @@ public class movment_player : MonoBehaviour {
        // }
         if (jump)
         {
+            
             player_rb.AddForce(new Vector2(0f, jumpforce ));
             jump = false;
            // jumpforce = 1000f;
@@ -67,6 +79,20 @@ public class movment_player : MonoBehaviour {
         //float moveVertical = Input.GetAxis("Vertical");
         //Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         //player_rb.AddForce(movement * speed);
+    }
+    void OnCollisionEnter(Collision theCollision)
+    {
+        if (theCollision.gameObject.name == "floor")
+        {
+            isgrounded = true;
+        }
+    }
+    void OnCollisionExit(Collision theCollision)
+    {
+        if (theCollision.gameObject.name == "floor")
+        {
+            isgrounded = false;
+        }
     }
     void Flip()
     {
