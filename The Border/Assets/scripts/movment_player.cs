@@ -44,12 +44,12 @@ public class movment_player : MonoBehaviour {
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name=="cactus")
+        if (collision.gameObject.tag=="enemy")
         {
             Destroy(this);
         }
     }
-    void FixedUpdate() {
+    void FixedUpdate() { 
 
         float H = Input.GetAxis("Horizontal");
         anim.SetFloat("speed", Mathf.Abs(H));
