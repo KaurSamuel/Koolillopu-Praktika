@@ -8,10 +8,11 @@ Virko:desain, vaenlased, "legaaalselt" saada tarkvara
 Kaur:liikumine
 
 Todo:
-basic movment
+basic movment (DONE)
 mingi vaenlane
 mingid sprite
-mingid animationid
+mingid animationid (Done)
+advanced animationid 
 advanced movment
 
-1P‰ev:r‰‰gime ideest, ıpime duality
+1P‰ev:r‰‰gime ideest, ıpime unity
